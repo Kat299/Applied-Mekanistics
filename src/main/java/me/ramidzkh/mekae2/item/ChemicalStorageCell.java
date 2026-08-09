@@ -15,14 +15,4 @@ public class ChemicalStorageCell extends BasicStorageCell {
     public ChemicalStorageCell(Properties properties, StorageTier tier) {
         super(properties, tier.idleDrain(), tier.bytes() / 1024, tier.bytes() / 128, 5, MekanismKeyType.TYPE);
     }
-
-    @Override
-    public boolean isBlackListed(ItemStack cellItem, AEKey requestedAddition) {
-        if (requestedAddition instanceof MekanismKey key) {
-            // Disallow storage cells to contain radioactive stuff
-            return !ChemicalAttributeValidator.DEFAULT.process(key.getStack());
-        }
-
-        return true;
-    }
 }
