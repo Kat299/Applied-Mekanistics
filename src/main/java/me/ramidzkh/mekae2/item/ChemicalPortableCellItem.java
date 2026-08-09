@@ -22,16 +22,6 @@ public class ChemicalPortableCellItem extends PortableCellItem {
     }
 
     @Override
-    public boolean isBlackListed(ItemStack cellItem, AEKey requestedAddition) {
-        if (requestedAddition instanceof MekanismKey key) {
-            // Disallow storage cells to contain radioactive stuff
-            return !ChemicalAttributeValidator.DEFAULT.process(key.getStack());
-        }
-
-        return true;
-    }
-
-    @Override
     public ResourceLocation getRecipeId() {
         return Objects.requireNonNull(getRegistryName());
     }
